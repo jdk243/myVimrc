@@ -9,8 +9,9 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'scrooloose/nerdtree'
 
 call vundle#end()
-filetype plugin indent on
-colorscheme Monokai
+filetype plugin indent on 
+set background=dark
+colorscheme mustang
 set autoindent
 set backspace=indent,eol,start
 set complete-=1
@@ -22,15 +23,8 @@ set nrformats-=octal
 set ttimeout
 set ttimeoutlen=100
 
-set incsearch
-if maparg('<C-L>', 'n') ==# ''
-	nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
-endif
-
 set laststatus=2
 set ruler
-set showcmd
-set wildmenu
 
 if !&scrolloff
 	set scrolloff=1
@@ -79,3 +73,46 @@ if &t_Co == 8 && $TERM !~# '^linux'
 endif
 
 inoremap <C-U> <C-G>u<C-U>
+
+syntax enable     " enable syntax processing
+
+set tabstop=2     " number of visual spaces per TAB
+set softtabstop=2 " number of spaces in tab when editing
+
+"UI Config
+set number " show line numbers
+set showcmd " show last command in bottom right
+set cursorline " highlight current line
+filetype indent on " load filetype-specific indent files
+set wildmenu " visual autocomplete for command menu
+set lazyredraw " redraw only when we need to
+set showmatch " highlight matching [{()}]
+
+
+"Searching
+set incsearch " search as characters are entered
+set hlsearch " highlight matches
+
+"Folding
+set foldenable " enable folding
+set foldlevelstart=10 "open most folds by default
+set foldnestmax=10 "10 nested fold max
+nnoremap <space> za
+set foldmethod=indent " fold based on indent level
+
+"Movement
+"move vertically by line regardless of line wrap
+nnoremap j gj
+nnoremap k gk
+"move to beginning/end of line
+nnoremap B ^
+nnoremap E $
+nnoremap ^ <nop>
+nnoremap $ <nop>
+" highlight last inserted text
+nnoremap gV `[v`]
+
+"Leader Shortcuts
+let mapleader="," "leader is comma
+inoremap jk <esc>
+
